@@ -17,8 +17,8 @@ A TOTP app that can be accessed anywhere you can access the internet without any
 - Always have access to TOTP token generator (as long as internet and device)
 
 ### Potential Further Development
-- npm package for server side testing
-- service that developers could pay for with 3 options
+- npm package (in dev)
+- service that developers could pay for (tiers for usage) with 3 options
   - get time
   - validate token
   - get token 
