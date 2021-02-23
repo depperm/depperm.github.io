@@ -3,7 +3,7 @@
     <v-row class="text-center">
       <v-col sm="12" md="6">
         <v-card class="ma-2">
-          <v-card-title>Token Gen Settings 1.28</v-card-title>
+          <v-card-title>Token Gen Settings 1.0</v-card-title>
           <v-container>
             <v-menu
               ref="showDatePicker"
@@ -34,14 +34,10 @@
               :append-icon="showSalt ? 'mdi-eye' : 'mdi-eye-off'"
               :type="showSalt ? 'text' : 'password'"
               name="input-10-1"
-              label="Random salt"
+              label="Token Secret"
               @click:append="showSalt = !showSalt"
             ></v-text-field>
-            <v-expansion-panels
-              v-model="panel"
-              :disabled="disabled"
-              multiple
-            >
+            <v-expansion-panels>
               <v-expansion-panel>
                 <v-expansion-panel-header>Extra Options</v-expansion-panel-header>
                 <v-expansion-panel-content>
@@ -73,7 +69,8 @@
 
 <script>
   //reference:https://tools.ietf.org/html/rfc6238
-  import crypto from 'crypto'
+  import webtotp from 'webtotp'
+
   export default {
 
     data: () => ({
@@ -96,34 +93,14 @@
     },
     computed: {
       timeUntilChangePercent:function(){
-        return Math.round(this.timeUntilChange*this.tokenTime)
+        return Math.round(this.timeUntilChange * this.tokenTime)
       }
     },
     methods: {
       generateTOTP(){
-        let interval=this.tokenTime* 1000;//in seconds
-        let time=new Date(this.tokenDate)
-        if((new Date()).getTime() > time)
-          this.timeUntilChange=Math.abs(((new Date()).getTime()-time)/interval)%1
-        else
-          this.timeUntilChange=Math.abs((time-(new Date()).getTime())/interval)%1
-        let hash=crypto.createHmac(this.hashType, Buffer.from(this.tokenSalt).toString('hex')).update((Math.abs(Math.floor(((new Date()).getTime()-time)/interval))).toString()).digest('hex')
-        console.log('hash:',hash)
-        //to byte array
-        var result = [];
-        for (var i = 0; i < hash.length; i += 2) {
-          result.push(parseInt(hash.substr(i, 2), 16));
-        }
-        let offset = result[result.length-1] & 0xf;
-        console.log(offset,result & 0xf)
-        let binary = ((result[offset] & 0x7f) << 24) |
-              ((result[offset + 1] & 0xff) << 16) |
-              ((result[offset + 2] & 0xff) << 8) |
-              (result[offset + 3] & 0xff);
-          
-        let otp = binary % Math.pow(10,this.tokenLength)
-        this.token= otp.toString().padStart(this.tokenLength,'0')
-        console.log('token:',this.token)
+        let gen = webtotp(this.tokenDate, this.tokenSalt,this.tokenTime, this.hashType, this.tokenLength)
+        this.token = gen.token
+        this.timeUntilChange = gen.timeUntilChange
       }
     }
   }
