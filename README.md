@@ -1,4 +1,5 @@
 # Web TOTP
+An example implementation of webtotp
 
 ## Site
 https://depperm.github.io/
@@ -25,7 +26,11 @@ A TOTP app that can be accessed anywhere you can access the internet without any
 
 ### Problems
 - Need to test situations where user changes local time (and differs from server time), will this affect app time based token
-- Password/salt and date still need to be stored server side, if there is a db dump/hack this info can be revealed and anyone can use your OTP
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  - A easy solution for this is for apps that implement their own front end tool to get the server date on load and check against local time.
+- Secret and date still need to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your OTP on that site
+- DoS possibility on site to deny users access to OTP
+- Generic dangers
+  - key log
+  - phished info
+  - copied info visually
+  - entering critical info on a third party site (all the code is available to peruse to hopefully ease worries, also this is an example/prototype only) 
