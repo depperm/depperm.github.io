@@ -53,7 +53,10 @@
       <v-col sm="12" md="6">
         <v-card class="ma-2">
           <v-container>
-            Token {{token}}
+            <span>Prev Token {{prevToken}}  </span>
+            ......
+            <span><b>Token {{token}}</b></span>
+            
             <br/>
             <v-progress-circular :size="100" :width="15" color="green" :value="timeUntilChange*100">
               {{Math.round(tokenTime-timeUntilChangePercent)}}
@@ -63,13 +66,21 @@
           </v-container>
         </v-card>
       </v-col>
+      <v-col sm="12" md="6">
+        <v-card class="ma-2">
+          <v-container>
+            <span>Allows current and the last token value to be validated</span>
+            <v-text-field label="Test TOTP Validate" v-model="testToken"/>
+            <span>{{validateResult}}</span>
+          </v-container>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  //reference:https://tools.ietf.org/html/rfc6238
-  import webtotp from 'webtotp'
+  import {webtotp, validate} from 'webtotp'
 
   export default {
 
@@ -83,10 +94,13 @@
       hashType: 'SHA1',
       hashTypes: ['SHA1','SHA256','SHA512'],
       token: 'XXXXXX',
+      prevToken: 'XXXXXX',
+      testToken: '',
       timeUntilChange: .25,
       generator: null,
       tokenTime: 30,
-      tokenTimes: [30,45,60]
+      tokenTimes: [30,45,60],
+      validateResult:''
     }),
     created(){
       this.generator = setInterval(()=>this.generateTOTP(), 1000);
@@ -98,9 +112,13 @@
     },
     methods: {
       generateTOTP(){
-        let gen = webtotp(this.tokenDate, this.tokenSalt,this.tokenTime, this.hashType, this.tokenLength)
+        let gen = webtotp(new Date(this.tokenDate), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength)
+        let gen2 = webtotp(new Date((new Date(this.tokenDate)).getTime() + (this.tokenTime * 1000)), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength)
         this.token = gen.token
+        this.prevToken = gen2.token
         this.timeUntilChange = gen.timeUntilChange
+
+        this.validateResult = validate(this.testToken, new Date(this.tokenDate), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength) ? 'VALID' : 'INVALID'
       }
     }
   }
