@@ -18,13 +18,14 @@ A TOTP app that can be accessed anywhere you can access the internet without any
 - Always have access to TOTP token generator (as long as internet, but don't need a personal device)
 
 ### Potential Further Development
+- Better front end use case examples
 - service that developers could pay for (tiers for usage) with 3 options
-  - get time
+  - get time (for synchronization)
   - validate token
-  - get token 
+  - get token
 
 ### Problems
-- Need to test situations where user changes local time (and differs from server time), will this affect app time based token
+- Need to test situations where user changes local time (and differs from server time), will this affect app/client time based token
   - A easy solution for this is for apps that implement their own front end tool to get the server date on load and check against local time.
 - Secret and date still need to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your TOTP on the leaked site
 - DoS possibility on public TOTP sites to deny users access to TOTP generator
