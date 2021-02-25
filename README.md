@@ -19,6 +19,7 @@ A TOTP app that can be accessed anywhere you can access the internet without any
 
 ### Potential Further Development
 - Better front end use case examples
+- browser extension
 - service that developers could pay for (tiers for usage) with 3 options
   - get time (for synchronization)
   - validate token
