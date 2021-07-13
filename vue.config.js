@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/depperm.github.io/',
+    publicPath: '/',
 
     transpileDependencies: [
       'vuetify'
