@@ -7,13 +7,27 @@
       dark
     >
       <v-spacer></v-spacer>
-      <v-toolbar-title class="white--text">Web TOTP</v-toolbar-title>
+      <v-toolbar-title class="white--text">Alternative Security Options</v-toolbar-title>
 
       <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-main>
-      <WebOTP/>
+      <v-expansion-panels>
+        <v-expansion-panel
+          v-for="(item,i) in ideas"
+          :key="i"
+        >
+          <v-expansion-panel-header>
+            {{item.title}}
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <component :is="item.component"></component>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <div>Web TOTP</div>
+      <!-- <WebOTP/> -->
     </v-main>
   </v-app>
 </template>
@@ -30,6 +44,7 @@ export default {
 
   data: () => ({
     //
+    ideas: [{title:'Web TOTP', component: WebOTP}]
   }),
 };
 </script>
