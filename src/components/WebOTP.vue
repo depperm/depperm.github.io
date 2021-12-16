@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col sm="12" md="6">
-        <v-card class="ma-2">
+        <v-card class="ma-2 about">
           <v-card-title>Web TOTP</v-card-title>
           <v-container>
             <h2>What</h2>
@@ -180,3 +180,8 @@
     }
   }
 </script>
+<style>
+.about{
+  text-align: left;
+}
+</style>

@@ -92,7 +92,7 @@
     },
     computed: {
     	dictionaries: function(){
-    		return Object.keys(dicts)
+    		return Object.keys(this.dicts)
     	}
     },
     methods: {
@@ -100,7 +100,7 @@
     		let start, end
     		if(wholeDictionary){
     			start=0;
-    			end=dicts[dictionary].length
+    			end=this.dicts[dictionary].length
     		}else{
     			// let numroll=4
 					this.rolls=[]
@@ -119,7 +119,7 @@
     		this.map={}
     		// generate map: theres probably a better way of doing this without regenerating it everytime
     		for (let i = start; i < end; i++) {
-			    let word = dicts[dictionary].wordlist[i]
+			    let word = this.dicts[dictionary].wordlist[i]
 			    for (let q = 0; q <= word.length; q++) {
 			      let kfrom = q < this.order ? 0 : q - this.order;
 			      let key = `${word.slice(kfrom, q)}`;
