@@ -1,8 +1,8 @@
 <template>
 	<v-container>
     <v-row class="text-center">
-      <v-col sm="12" md="6">
-        <v-card class="ma-2">
+      <v-col col="12">
+        <v-card class="ma-2 about">
           <v-card-title>Markov Diceware</v-card-title>
           <v-container>
             <h2>What</h2>
@@ -49,7 +49,7 @@
             <v-select v-model="dictionary" :items="dictionaries" label="Dictionary"></v-select>
             <v-row justify="space-around">
               <v-checkbox v-model="wholeDictionary" label="Use Whole Dictionary" title="Default is to use min & max of dice rolls to generate markov chain"></v-checkbox>
-            	<v-btn depressed color="primary" @click="generate">
+            	<v-btn depressed color="primary" @click="generatePassword()">
    						 Generate
   						</v-btn>
             </v-row>
