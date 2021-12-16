@@ -119,7 +119,7 @@
     		this.map={}
     		// generate map: theres probably a better way of doing this without regenerating it everytime
     		for (let i = start; i < end; i++) {
-			    let word = this.dicts[dictionary][i]
+			    let word = this.dicts[this.dictionary][i]
 			    for (let q = 0; q <= word.length; q++) {
 			      let kfrom = q < this.order ? 0 : q - this.order;
 			      let key = `${word.slice(kfrom, q)}`;
