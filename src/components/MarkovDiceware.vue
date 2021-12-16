@@ -55,9 +55,9 @@
             </v-row>
             <v-row align="left">
 	            <span>Passphrase:</span>
-	            <div>
+	            <strong class="ml-3">
 	              {{passphrase}}
-	            </div>
+	            </strong>
             </row>
           </v-container>
         </v-card>
@@ -85,7 +85,6 @@
     	passphrase:'',
     	rolls:[],
     	map:{}
-      // showSalt: false,
     }),
     created(){
     	
@@ -102,7 +101,6 @@
     			start=0;
     			end=this.dicts[dictionary].length
     		}else{
-    			// let numroll=4
 					let rolls=[]
 
 					for(let i=0;i<this.numWords;i++){
@@ -116,6 +114,7 @@
     		this.getWordsFromRange(start, end)
     	},
     	getWordsFromRange(start, end){
+    		let maxWordLength=10
     		this.map={}
     		// generate map: theres probably a better way of doing this without regenerating it everytime
     		for (let i = start; i < end; i++) {
@@ -137,20 +136,17 @@
 			  for (let i = 0; i < this.numWords; i++) {
 			    let newWord = ''
 			    let nextChar = this.map[newWord][Math.floor(Math.random() * this.map[newWord].length)]
-			    // console.log(newWord, nextChar)
 			    while (nextChar != '') {
 			      newWord += nextChar
 			      let kfrom = newWord.length < this.order ? 0 : newWord.length - this.order;
 			      let key = `${newWord.slice(kfrom, kfrom + this.order)}`
-			      // console.log('>',kfrom,key,newWord)
 			      nextChar = this.map[key][Math.floor(Math.random() * this.map[key].length)]
 			      exit += 1
-			      if (exit > 10) {
+			      if (exit > maxWordLength) {
 			        break
 			      }
 			    }
 			    exit = 0
-			    // console.log(newWord)
 			    words.push(newWord)
 			  }
 			  this.passphrase = words.map(word=>`${word[0].toUpperCase()}${word.substr(1)}`).join('')
