@@ -88,7 +88,7 @@
       // showSalt: false,
     }),
     created(){
-    	console.log('>',dictA.wordlist[0])
+    	
     },
     computed: {
     	dictionaries: function(){
@@ -113,13 +113,13 @@
 					start=rolls[0]
 					end=rolls[rolls.length-1]
     		}
-    		getWordsFromRange(start, end)
+    		this.getWordsFromRange(start, end)
     	},
     	getWordsFromRange(start, end){
     		this.map={}
     		// generate map: theres probably a better way of doing this without regenerating it everytime
     		for (let i = start; i < end; i++) {
-			    let word = this.dicts[dictionary].wordlist[i]
+			    let word = this.dicts[dictionary][i]
 			    for (let q = 0; q <= word.length; q++) {
 			      let kfrom = q < this.order ? 0 : q - this.order;
 			      let key = `${word.slice(kfrom, q)}`;
