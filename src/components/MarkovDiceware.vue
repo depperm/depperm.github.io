@@ -98,7 +98,7 @@
     methods: {
     	generatePassword(){
     		let start, end
-    		if(wholeDictionary){
+    		if(this.wholeDictionary){
     			start=0;
     			end=this.dicts[dictionary].length
     		}else{
