@@ -99,7 +99,7 @@
     		let start, end
     		if(this.wholeDictionary){
     			start=0;
-    			end=this.dicts[dictionary].length
+    			end=this.dicts[this.dictionary].length
     		}else{
 					let rolls=[]
 
