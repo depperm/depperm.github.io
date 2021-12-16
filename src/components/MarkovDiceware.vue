@@ -103,7 +103,7 @@
     			end=this.dicts[dictionary].length
     		}else{
     			// let numroll=4
-					this.rolls=[]
+					let rolls=[]
 
 					for(let i=0;i<this.numWords;i++){
 					  let roll=parseInt((Math.random() * ((Math.pow(6, 5)-1) + 1)), 10)//5 dice rolled
