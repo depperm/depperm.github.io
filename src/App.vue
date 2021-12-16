@@ -10,10 +10,33 @@
       <v-toolbar-title class="white--text">Alternative Security Options</v-toolbar-title>
 
       <v-spacer></v-spacer>
+      <template v-slot:extension>
+        <v-tabs v-model="tab">
+          <v-tabs-slider color="yellow"></v-tabs-slider>
+
+          <v-tab
+            v-for="item in ideas"
+            :key="item"
+          >
+            {{ item.title }}
+          </v-tab>
+        </v-tabs>
+      </template>
     </v-app-bar>
 
     <v-main>
-      <v-expansion-panels>
+      <v-tabs-items v-model="tab">
+        <v-tab-item
+          v-for="item in ideas"
+          :key="item"
+        >
+          <!-- <v-card flat>
+            <v-card-text v-text="text"></v-card-text>
+          </v-card> -->
+          <component :is="item.component"></component>
+        </v-tab-item>
+      </v-tabs-items>
+      <!-- <v-expansion-panels>
         <v-expansion-panel
           v-for="(item,i) in ideas"
           :key="i"
@@ -25,7 +48,7 @@
             <component :is="item.component"></component>
           </v-expansion-panel-content>
         </v-expansion-panel>
-      </v-expansion-panels>
+      </v-expansion-panels> -->
     </v-main>
   </v-app>
 </template>
@@ -42,7 +65,7 @@ export default {
   },
 
   data: () => ({
-    //
+    tab: null,
     ideas: [
       {title:'Web TOTP', component: WebOTP},
       {title:'Markov Diceware', component: MarkovDiceware}
