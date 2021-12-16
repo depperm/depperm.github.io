@@ -1,38 +1,36 @@
-# Web TOTP
-An example implementation of [webtotp](https://github.com/depperm/webtotp)
+# Alternative Security Options
+Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.
 
-## Live Version
+## Demo
 https://depperm.github.io/
 
+- [![npm (scoped)](https://img.shields.io/badge/npm-2.2.0-green)](https://www.npmjs.com/package/webtotp) [webtotp](https://www.npmjs.com/package/webtotp)
+
 ### What
-A TOTP app that can be accessed anywhere you can access the internet without any extra apps installed.
+A variety of security alternatives beyond what is currently available. Included are a few examples I've made up
+
+- Web TOTP: [TOTP](https://en.wikipedia.org/wiki/Time-based_One-Time_Password) without the device/app download
+- Markov Diceware: combining markov chains and diceware to increase randomness
 
 ### Why
-- Most current 2FA methods require an app, extension, or hardware device (this has the downside of when you lose the hardware device or lose access to your device you can no longer use 2FA)
-- Lack of free totp implementations (users can use apps for free, but developers can't necessarily develop apps that use 2FA on the cheap to my knowledge)
+We as humanity have been reduced to using [dumb password rules](https://github.com/duffn/dumb-password-rules) which increase complexity and decreases usability. Or rules that enforce changing one's password after an arbitary period of time. Rules such as these are more of a security theater, making us feel safe but at the cost of [remembering confusing passwords](https://xkcd.com/936/). I believe there are better options. Even if none of these ideas ever gain traction, there are other options out there that would improve usability of passwords like:
 
-### Benefits
-- Allow users to choose date (future/present)-infite possibilities
-- Allow user to choose own secret-infite possibilities
-- Can implement different TOTP on multiple sites with the same tool
-- Always have access to TOTP token generator (as long as internet, but don't need a personal device)
+- [zxcvbn](https://github.com/zxcvbn-ts/zxcvbn): a better password strength checker *almost all estimators of password strength are utter nonsense*<sup>[source](https://security.stackexchange.com/questions/208937/is-diceware-more-secure-than-a-long-passphrase#comment-420430)</sup>
+- Android's 3x3 dot pattern password (initial version has 389,112 possibilities, but the grid could be expanded, dots could be allowed to be revisited, have no max length, etc to increase randomness)
+- [Microsoft's picture](https://docs.microsoft.com/en-us/archive/blogs/b8/signing-in-with-a-picture-password?Redirected=true#comments) password (like passwords though they can be easy to guess, Microsoft came out with [article](https://docs.microsoft.com/en-us/archive/blogs/b8/optimizing-picture-password-security?Redirected=true) how to increase security)
 
-### Potential Further Development
-- Better front end use case examples
-- define ts types
-- browser extension
-- service that developers could pay for (tiers for usage) with 3 options
-  - get time (for synchronization)
-  - validate token
-  - get token
 
-### Problems
-- Need to test situations where user changes local time (and differs from server time), will this affect app/client time based token
-  - A easy solution for this is for apps that implement their own front end tool to get the server date on load and check against local time.
-- Secret and date still need to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your TOTP on the leaked site
-- DoS possibility on public TOTP sites to deny users access to TOTP generator
-- Generic dangers
-  - key logging
-  - phished info
-  - copied info visually/over shoulder
-  - entering critical info on a third party site (all the code is available to peruse to hopefully ease worries, also this is meant to be an example/prototype only) 
+### Password Security References
+
+- [NIST](https://pages.nist.gov/800-63-3/sp800-63b.html#sec5): National Institute of Standards and Technology (US)
+    - password minimum length 8+
+    - block/reject compromised/common/sequential passwords(see zxcvbn above or [haveibeenpwned](https://haveibeenpwned.com))
+    - **ALL** characters allowed
+- [NSC](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach): National Cyber Security Centre (UK)
+    - encourage password manager use (generated passwords can be super complex)
+    - encourage memorable password (3 word (diceware see above) or CVC-CVC-CVC format)
+    - don't enforce complexity
+    - block/reject compromised/common passwords (ditto of above)
+
+
+

@@ -3,6 +3,62 @@
     <v-row class="text-center">
       <v-col sm="12" md="6">
         <v-card class="ma-2">
+          <v-card-title>Web TOTP</v-card-title>
+          <v-container>
+            <h2>What</h2>
+            <p>A TOTP app that can be accessed anywhere you can access the internet without any extra apps installed.</p>
+            <h2>Why Use</h2>
+            <ul>
+              <li>Most current 2FA(TOTP) methods require an app(authenticator), extension(sometimes browser dependant), or hardware device(RSA token) (this has the downside of when you lose the hardware device or lose access to your device you can no longer use 2FA)</li>
+              <li>Lack of free totp implementations (users can use apps for free, but developers can't necessarily develop apps that use 2FA on the cheap to my knowledge)</li>
+            </ul>
+            <h2>Benefits</h2>
+            <ul>
+              <li>Allow users to choose date (future/present)-infinite possibilities</li>
+              <li>Allow user to choose own secret (or have domain specific)-infinite possibilities</li>
+              <li>Can implement different TOTP on multiple sites with the same tool</li>
+              <li>Always have access to TOTP token generator (as long as internet, but don't need a personal device)</li>
+            </ul>
+            <h2>Problems/Risks</h2>
+            <ul>
+              <li>Need to test situations where user changes local time (and differs from server time), will this affect app/client time based token
+                <ul>
+                  <li>A easy solution for this is for apps that implement their own front end tool to get the server date on load and check against local time.</li>
+                </ul>
+              </li>
+              <li>Secret and date still need to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your TOTP on the leaked site
+                <ul>
+                  <li>I believe this is a risk of other OTP</li>
+                  <li>can this be done with homomorphic encryption?</li>
+                </ul>
+              </li>
+              <li>DoS possibility on public TOTP sites to deny users access to TOTP generator (not much risk if domain hosted or if various DoS protections are in place)
+              </li>
+              <li>Generic dangers
+                <ul>
+                  <li>key logging</li>
+                  <li>phised info</li>
+                  <li>over shoulder spied</li>
+                </ul>
+              </li>
+            </ul>
+            <h2>Further Development</h2>
+            <ul>
+              <li>Better front end use case examples</li>
+              <li>Browser extension</li>
+              <li>PWA</li>
+              <li>Paid options
+                <ul>
+                  <li>get time (for synchronization)</li>
+                  <li>get/validate token</li>
+                </ul>
+              </li>
+            </ul>
+          </v-container>
+        </v-card>
+      </v-col>
+      <v-col sm="12" md="6">
+        <v-card class="ma-2">
           <v-card-title>Token Gen Settings 1.0</v-card-title>
           <v-container>
             <v-menu

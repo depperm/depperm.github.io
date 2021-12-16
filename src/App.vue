@@ -26,14 +26,13 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <div>Web TOTP</div>
-      <!-- <WebOTP/> -->
     </v-main>
   </v-app>
 </template>
 
 <script>
 import WebOTP from './components/WebOTP';
+import MarkovDiceware from './components/MarkovDiceware';
 
 export default {
   name: 'App',
@@ -44,7 +43,10 @@ export default {
 
   data: () => ({
     //
-    ideas: [{title:'Web TOTP', component: WebOTP}]
+    ideas: [
+      {title:'Web TOTP', component: WebOTP},
+      {title:'Markov Diceware', component: MarkovDiceware}
+    ]
   }),
 };
 </script>
