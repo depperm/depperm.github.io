@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col col="12">
+      <v-col cols="12">
         <v-card class="ma-2 about">
           <v-card-title>Time Based Pin</v-card-title>
           <v-container>
@@ -52,7 +52,7 @@
         </v-card>
       </v-col>
       <v-col sm="12" md="6">
-        <v-card class="ma-2">
+        <v-card class="ma-2 about">
           <v-card-title>Pin Language</v-card-title>
           <v-container>
             Time Variables:
@@ -85,7 +85,7 @@
           <v-card-title>Pin Equation</v-card-title>
           <v-container>
             <v-text-field v-model="equation" label="Equation" title="See grammar above" @keyup="checkEquation()"></v-text-field>
-            <span v-if="invalidEquation"></span>
+            <span v-if="invalidEquation">{{error}}</span>
             <v-btn depressed color="primary" @click="resetEquation()">
               Reset
             </v-btn>
@@ -95,9 +95,17 @@
       <v-col sm="12" md="6">
         <v-card class="ma-2">
           <v-container>
-            <span>Allows current and the last token value to be validated</span>
-            <v-text-field label="Test TOTP Validate" v-model="testToken"/>
-            <span>{{validateResult}}</span>
+            <pre class="mono">
+                  AB:EF
+              MIL {{milHours}}:{{minutes}} {{seconds}}
+                  CD:EF
+              STD {{stdHours}}:{{minutes}} {{seconds}}
+                  GH/IJ/KLMN
+              STD {{month}}/{{day}}/{{year}}
+            </pre>
+            <span>Test your equation</span>
+            <v-text-field label="Test Password" v-model="pinTest"/>
+            <span>{{ validResult ? 'VALID' : 'INVALID' }}</span>
           </v-container>
         </v-card>
       </v-col>
@@ -114,7 +122,11 @@
       equation: '(A+B), (C-D), ((A * B) % 10), D',
       invalidEquation: false,
       error: '',
-      pins: []
+      pins: [],
+      seconds:'00',
+      minutes: '00',
+      hours: 0,
+      date: new Date(),
       // showSalt: false,
       // tokenSalt: '',
       // showDatePicker: false,
@@ -134,11 +146,44 @@
     }),
     created(){
       // this.generator = setInterval(()=>this.generateTOTP(), 1000);
+      this.intervalSec = setInterval(() => {
+        // Concise way to format time according to system locale.
+        // In my case this returns "3:48:00 am"
+        this.date=new Date()
+        this.seconds = `${(date.getSeconds()+1).toString().padStart(2,'0')}`
+        this.minutes = `${(date.getMinutes()+1).toString().padStart(2,'0')}`
+        this.hours = date.getHours()+1
+      }, 1000)
     },
     computed: {
-      // timeUntilChangePercent:function(){
-      //   return Math.round(this.timeUntilChange * this.tokenTime)
-      // }
+      milHours:function(){
+        return `${this.hours.toString().padStart(2,'0')}`
+      },
+      stdHours:function(){
+        return `${this.hours.toString().padStart(2,'0')}`
+      },
+      day:function(){
+        return `${this.date.getDate().toString().padStart(2,'0')}`
+      },
+      month:function(){
+        return `${(this.date.getMonth()+1).toString().padStart(2,'0')}`
+      },
+      year:function(){
+        return this.date.getFullYear()
+      },
+      validResult:function(){
+        let input=pinTest.split(',')
+        if(input.length!=this.pins.length){
+          return false
+        }else{
+          input.forEach((num,idx)=>{
+            if(parseInt(num)!=this.pins[idx].value()){
+              return false
+            }
+          })
+          return false
+        }
+      }
     },
     methods: {
       resetEquation(){
@@ -152,6 +197,7 @@
           })
           this.invalidEquation=false
         }catch(e){
+          console.log('error')
           this.invalidEquation=true
           this.error=e
         }
@@ -171,5 +217,8 @@
 <style>
 .about{
   text-align: left;
+}
+.mono{
+  font-family: "Lucida Console", Courier, monospace;
 }
 </style>

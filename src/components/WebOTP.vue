@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col col="12">
+      <v-col cols="12">
         <v-card class="ma-2 about">
           <v-card-title>Web TOTP</v-card-title>
           <v-container>
