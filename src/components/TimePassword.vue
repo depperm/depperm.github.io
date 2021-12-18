@@ -34,7 +34,7 @@
               <li>Pin equation needs to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your pin on the leaked site</li>
               <li>Generic dangers
                 <ul>
-                  <li><s>key logging</s>(caveat is the initial equation can be, simple equations can be reverse engineered)</li>
+                  <li><s>key logging</s>(caveat is the initial equation can be, simple equations could potentially be reversed engineered)</li>
                   <li>phished info?(should in theory be harder for someone to phish for equations)</li>
                   <li><s>over shoulder spied</s>(caveat same as above)</li>
                 </ul>
@@ -81,33 +81,37 @@
         </v-card>
       </v-col>
       <v-col sm="12" md="6">
-        <v-card class="ma-2">
-          <v-card-title>Pin Equation</v-card-title>
-          <v-container>
-            <v-text-field v-model="equation" label="Equation" title="See grammar above" @keyup="checkEquation()"></v-text-field>
-            <span v-if="invalidEquation">{{error}}</span>
-            <v-btn depressed color="primary" @click="resetEquation()">
-              Reset
-            </v-btn>
-          </v-container>
-        </v-card>
-      </v-col>
-      <v-col sm="12" md="6">
-        <v-card class="ma-2">
-          <v-container>
-            <pre class="mono">
-                  AB:EF
-              MIL {{milHours}}:{{minutes}} {{seconds}}
-                  CD:EF
-              STD {{stdHours}}:{{minutes}} {{seconds}}
-                  GH/IJ/KLMN
-              STD {{month}}/{{day}}/{{year}}
-            </pre>
-            <span>Test your equation</span>
-            <v-text-field label="Test Password" v-model="pinTest"/>
-            <span>{{ validResult ? 'VALID' : 'INVALID' }}</span>
-          </v-container>
-        </v-card>
+        <v-row>
+          <v-col cols="12">
+            <v-card class="ma-2">
+              <v-card-title>Pin Equation</v-card-title>
+              <v-container>
+                <v-text-field v-model="equation" label="Equation" title="See grammar above" @keyup="checkEquation()"></v-text-field>
+                <span v-if="invalidEquation">{{error}}</span>
+                <v-btn depressed color="primary" @click="resetEquation()">
+                  Reset
+                </v-btn>
+              </v-container>
+            </v-card>
+          </v-col>
+          <v-col cols="12">
+            <v-card class="ma-2">
+              <v-container>
+                <pre class="mono about">
+                      AB:EF
+                  MIL {{milHours}}:{{minutes}} {{seconds}}
+                      CD:EF
+                  STD {{stdHours}}:{{minutes}} {{seconds}} {{milHours<12?'AM':'PM'}}
+                      GH/IJ/KLMN
+                  STD {{month}}/{{day}}/{{year}}
+                </pre>
+                <span>Test your equation</span>
+                <v-text-field label="Test Password" v-model="pinTest"/>
+                <span>{{ validResult ? 'VALID' : 'INVALID' }}</span>
+              </v-container>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -127,23 +131,7 @@
       minutes: '00',
       hours: 0,
       date: new Date(),
-      pinTest: '',
-      // showSalt: false,
-      // tokenSalt: '',
-      // showDatePicker: false,
-      // tokenDate: (new Date('1970-1-1')).toISOString().substring(0,10),
-      // tokenLength: 6,
-      // tokenLengths: [6,7,8],
-      // hashType: 'SHA1',
-      // hashTypes: ['SHA1','SHA256','SHA512'],
-      // token: 'XXXXXX',
-      // prevToken: 'XXXXXX',
-      // testToken: '',
-      // timeUntilChange: .25,
-      // generator: null,
-      // tokenTime: 30,
-      // tokenTimes: [30,45,60],
-      // validateResult:''
+      pinTest: ''
     }),
     created(){
       // this.generator = setInterval(()=>this.generateTOTP(), 1000);
@@ -151,7 +139,7 @@
         // Concise way to format time according to system locale.
         // In my case this returns "3:48:00 am"
         this.date=new Date()
-        this.seconds = `${(this.date.getSeconds()+1).toString().padStart(2,'0')}`
+        this.seconds = `${this.date.getSeconds().toString().padStart(2,'0')}`
         this.minutes = `${(this.date.getMinutes()+1).toString().padStart(2,'0')}`
         this.hours = this.date.getHours()+1
       }, 1000)
