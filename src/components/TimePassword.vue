@@ -167,13 +167,14 @@
         if(input.length!=this.pins.length){
           return false
         } else {
+          let v=true
           input.forEach((num,idx)=>{
             console.log(parseInt(num),this.pins[idx].value())
             if(parseInt(num) != this.pins[idx].value()){
-              return false
+              v = false
             }
           })
-          return true
+          return v
         }
       }
     },
