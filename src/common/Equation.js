@@ -39,7 +39,7 @@ export default class EQ {
     return this.input
   }
   valid(num){
-    return this.value()==num
+    return this.value() == num
   }
   value() {
     if (this.values.length == 1) {

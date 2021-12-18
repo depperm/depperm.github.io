@@ -199,9 +199,9 @@
       checkEquation(){
         try{
           this.pins = this.equation.split(/,\s*/).map(p => new EQ(p))
-          // this.pins.forEach((pin, idx) => {
-          //   console.log(pin.toString(), pin.value())
-          // })
+          this.pins.forEach((pin, idx) => {
+            console.log(pin.toString(), pin.value())
+          })
           this.invalidEquation=false
         }catch(e){
           this.invalidEquation=true
