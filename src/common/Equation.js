@@ -45,7 +45,7 @@ export default class EQ {
     if (this.values.length == 1) {
       if (parseInt(this.values[0])) {
         return parseInt(this.values[0])
-      } else if ('ABCDEF'.includes(this.values[0])) {
+      } else if ('ABCDEFGHIJKLMN'.includes(this.values[0])) {
         let twelve = null
         switch (this.values[0]) {
           case 'A':
@@ -100,6 +100,7 @@ export default class EQ {
             break;
         }
       }
+      return 0//shouldn't get here
     } else {
       let ans = 0
       switch (this.op) {
