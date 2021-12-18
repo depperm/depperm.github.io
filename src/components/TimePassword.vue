@@ -163,11 +163,12 @@
       },
       validResult:function(){
         let input=this.pinTest.split(',')
-        // console.log(input,this.pins.map(p=>p.value()))
+        console.log(input,this.pins.map(p=>p.value()))
         if(input.length!=this.pins.length){
           return false
         } else {
           input.forEach((num,idx)=>{
+            console.log(parseInt(num),this.pins[idx].value())
             if(parseInt(num) != this.pins[idx].value()){
               return false
             }
@@ -188,7 +189,6 @@
           })
           this.invalidEquation=false
         }catch(e){
-          console.log('error')
           this.invalidEquation=true
           this.error=e
         }
