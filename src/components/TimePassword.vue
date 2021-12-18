@@ -88,15 +88,22 @@
               <v-container>
                 <v-text-field v-model="equation" label="Equation" title="See grammar above" @keyup="checkEquation()"></v-text-field>
                 <div v-if="invalidEquation">{{error}}</div>
-                <v-btn depressed color="primary" @click="resetEquation()">
+                <v-btn depressed color="primary" @click="resetEquation()" class="mr-2">
                   Reset
                 </v-btn>
-                <v-btn depressed color="primary" @hover="showPin()">
-                  Show Password
-                </v-btn>
-                <div>
-                  {{actualPin}}
-                </div>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      color="primary"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      Show Password
+                    </v-btn>
+                  </template>
+                  <span>{{actualPin}}</span>
+                </v-tooltip>
               </v-container>
             </v-card>
           </v-col>
