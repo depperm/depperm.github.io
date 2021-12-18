@@ -163,6 +163,7 @@
       },
       validResult:function(){
         let input=this.pinTest.split(',')
+        console.log(input,this.pins.map(p=>p.value()))
         if(input.length!=this.pins.length){
           return false
         }else{
@@ -182,7 +183,7 @@
       checkEquation(){
         try{
           this.pins = this.equation.split(/,\s*/).map(p => new EQ(p))
-          pins.forEach((pin, idx) => {
+          this.pins.forEach((pin, idx) => {
             console.log(pin.toString(), pin.value())
           })
           this.invalidEquation=false
