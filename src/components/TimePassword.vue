@@ -143,13 +143,14 @@
         this.minutes = `${(this.date.getMinutes()+1).toString().padStart(2,'0')}`
         this.hours = this.date.getHours()+1
       }, 1000)
+      checkEquation()
     },
     computed: {
       milHours:function(){
         return `${this.hours.toString().padStart(2,'0')}`
       },
       stdHours:function(){
-        return `${this.hours.toString().padStart(2,'0')}`
+        return `${(this.hours>12?this.hours-12:this.hours).toString().padStart(2,'0')}`
       },
       day:function(){
         return `${this.date.getDate().toString().padStart(2,'0')}`
