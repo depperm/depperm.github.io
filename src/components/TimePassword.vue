@@ -163,16 +163,16 @@
       },
       validResult:function(){
         let input=this.pinTest.split(',')
-        console.log(input,this.pins.map(p=>p.value()))
+        // console.log(input,this.pins.map(p=>p.value()))
         if(input.length!=this.pins.length){
           return false
-        }else{
+        } else {
           input.forEach((num,idx)=>{
-            if(parseInt(num)!=this.pins[idx].value()){
+            if(parseInt(num) != this.pins[idx].value()){
               return false
             }
           })
-          return false
+          return true
         }
       }
     },
