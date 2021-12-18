@@ -127,6 +127,7 @@
       minutes: '00',
       hours: 0,
       date: new Date(),
+      pinTest: '',
       // showSalt: false,
       // tokenSalt: '',
       // showDatePicker: false,
