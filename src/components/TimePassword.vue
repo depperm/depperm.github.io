@@ -151,9 +151,9 @@
         // Concise way to format time according to system locale.
         // In my case this returns "3:48:00 am"
         this.date=new Date()
-        this.seconds = `${(date.getSeconds()+1).toString().padStart(2,'0')}`
-        this.minutes = `${(date.getMinutes()+1).toString().padStart(2,'0')}`
-        this.hours = date.getHours()+1
+        this.seconds = `${(this.date.getSeconds()+1).toString().padStart(2,'0')}`
+        this.minutes = `${(this.date.getMinutes()+1).toString().padStart(2,'0')}`
+        this.hours = this.date.getHours()+1
       }, 1000)
     },
     computed: {
@@ -173,7 +173,7 @@
         return this.date.getFullYear()
       },
       validResult:function(){
-        let input=pinTest.split(',')
+        let input=this.pinTest.split(',')
         if(input.length!=this.pins.length){
           return false
         }else{
