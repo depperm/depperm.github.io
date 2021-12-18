@@ -22,17 +22,18 @@
             </ul>
             <h2>Problems/Risks</h2>
             <ul>
-              <li>Some generated words will be completely weird</li>
+              <li>Some generated words will be completely weird(some diceware are this way too, to be fair)</li>
               <li>Generic dangers
                 <ul>
                   <li>key logging</li>
-                  <li>phised info</li>
+                  <li>phished info</li>
                   <li>over shoulder spied</li>
                 </ul>
               </li>
             </ul>
             <h2>Further Development</h2>
             <ul>
+              <li>NPM</li>
               <li>Browser extension</li>
               <li>PWA</li>
             </ul>

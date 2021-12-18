@@ -26,29 +26,10 @@
 
     <v-main>
       <v-tabs-items v-model="tab">
-        <v-tab-item
-          v-for="item in ideas"
-          :key="item"
-        >
-          <!-- <v-card flat>
-            <v-card-text v-text="text"></v-card-text>
-          </v-card> -->
+        <v-tab-item v-for="item in ideas" :key="item">
           <component :is="item.component"></component>
         </v-tab-item>
       </v-tabs-items>
-      <!-- <v-expansion-panels>
-        <v-expansion-panel
-          v-for="(item,i) in ideas"
-          :key="i"
-        >
-          <v-expansion-panel-header>
-            {{item.title}}
-          </v-expansion-panel-header>
-          <v-expansion-panel-content>
-            <component :is="item.component"></component>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels> -->
     </v-main>
   </v-app>
 </template>
@@ -56,6 +37,7 @@
 <script>
 import WebOTP from './components/WebOTP';
 import MarkovDiceware from './components/MarkovDiceware';
+import TimePassword from './components/TimePassword';
 
 export default {
   name: 'App',
@@ -68,7 +50,8 @@ export default {
     tab: null,
     ideas: [
       {title:'Web TOTP', component: WebOTP},
-      {title:'Markov Diceware', component: MarkovDiceware}
+      {title:'Markov Diceware', component: MarkovDiceware},
+      {title:'Time Based Password', component: TimePassword}
     ]
   }),
 };

@@ -29,7 +29,6 @@
               <li>Secret and date still need to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your TOTP on the leaked site
                 <ul>
                   <li>I believe this is a risk of other OTP</li>
-                  <li>can this be done with homomorphic encryption?</li>
                 </ul>
               </li>
               <li>DoS possibility on public TOTP sites to deny users access to TOTP generator (not much risk if domain hosted or if various DoS protections are in place)
@@ -37,7 +36,7 @@
               <li>Generic dangers
                 <ul>
                   <li>key logging</li>
-                  <li>phised info</li>
+                  <li>phished info</li>
                   <li>over shoulder spied</li>
                 </ul>
               </li>
