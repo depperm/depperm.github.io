@@ -3,7 +3,6 @@ export default class EQ {
     this.input = input
     input = input.replace(/ /g, '')
     if (input[0] == '(') {
-      console.log(input, this.input.match(/\(/g), this.input.match(/\)/g))
       if(!this.input.match(/\)/g) || (this.input.match(/\(/g).length != this.input.match(/\)/g).length)){
         throw 'Non matching parenthesis'
       }
@@ -81,7 +80,7 @@ export default class EQ {
             return (new Date().getMonth()+1) % 10
             break;
           case 'I':
-            return new Date().getDate() / 10
+            return Math.floor(new Date().getDate() / 10)
             break;
           case 'J':
             return new Date().getDate() % 10
