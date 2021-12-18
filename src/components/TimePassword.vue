@@ -143,7 +143,7 @@
         this.minutes = `${(this.date.getMinutes()+1).toString().padStart(2,'0')}`
         this.hours = this.date.getHours()+1
       }, 1000)
-      checkEquation()
+      this.checkEquation()
     },
     computed: {
       milHours:function(){
@@ -192,15 +192,6 @@
           this.error=e
         }
       }
-      // generateTOTP(){
-      //   let gen = webtotp.webtotp(new Date(this.tokenDate), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength)
-      //   let gen2 = webtotp.webtotp(new Date((new Date(this.tokenDate)).getTime() + (this.tokenTime * 1000)), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength)
-      //   this.token = gen.token
-      //   this.prevToken = gen2.token
-      //   this.timeUntilChange = gen.timeUntilChange
-
-      //   this.validateResult = webtotp.validate(this.testToken, new Date(this.tokenDate), this.tokenSalt, this.tokenTime, this.hashType, this.tokenLength) ? 'VALID' : 'INVALID'
-      // }
     }
   }
 </script>
