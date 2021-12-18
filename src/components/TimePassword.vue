@@ -87,10 +87,16 @@
               <v-card-title>Pin Equation</v-card-title>
               <v-container>
                 <v-text-field v-model="equation" label="Equation" title="See grammar above" @keyup="checkEquation()"></v-text-field>
-                <span v-if="invalidEquation">{{error}}</span>
+                <div v-if="invalidEquation">{{error}}</div>
                 <v-btn depressed color="primary" @click="resetEquation()">
                   Reset
                 </v-btn>
+                <v-btn depressed color="primary" @hover="showPin()">
+                  Show Password
+                </v-btn>
+                <div>
+                  {{actualPin}}
+                </div>
               </v-container>
             </v-card>
           </v-col>
@@ -106,7 +112,7 @@
                   STD {{month}}/{{day}}/{{year}}
                 </pre>
                 <span>Test your equation</span>
-                <v-text-field label="Test Password" v-model="pinTest"/>
+                <v-text-field label="Test Password" v-model="pinTest" title="Comma separated pin"/>
                 <span>{{ validResult ? 'VALID' : 'INVALID' }}</span>
               </v-container>
             </v-card>
@@ -163,19 +169,20 @@
       },
       validResult:function(){
         let input=this.pinTest.split(',')
-        console.log(input,this.pins.map(p=>p.value()))
         if(input.length!=this.pins.length){
           return false
         } else {
           let v=true
           input.forEach((num,idx)=>{
-            console.log(parseInt(num),this.pins[idx].value())
             if(parseInt(num) != this.pins[idx].value()){
               v = false
             }
           })
           return v
         }
+      },
+      actualPin:function(){
+        return this.pins.map(p=>p.value()).join(',')
       }
     },
     methods: {
@@ -185,9 +192,9 @@
       checkEquation(){
         try{
           this.pins = this.equation.split(/,\s*/).map(p => new EQ(p))
-          this.pins.forEach((pin, idx) => {
-            console.log(pin.toString(), pin.value())
-          })
+          // this.pins.forEach((pin, idx) => {
+          //   console.log(pin.toString(), pin.value())
+          // })
           this.invalidEquation=false
         }catch(e){
           this.invalidEquation=true
