@@ -37,7 +37,7 @@
         	<v-card-title>Music Pin</v-card-title>
           <v-container>
             <p>
-          		<img src="../assets/music-pin.PNG">
+          		<img src="../assets/music-pin.png">
             </p>
           </v-container>
         </v-card>
