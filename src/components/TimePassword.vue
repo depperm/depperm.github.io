@@ -26,7 +26,7 @@
                   <li>May require calculator (possible to make a RSA token like device with personalized equation?)</li>
                   <li>Time consuming to compute/solve, potential need to recalculate pin if the time changes
                     <ul>
-                      <li>A solution that only uses minute variables towards the end of one's pin, which would reduce this risk, makes pins more predictable, lowers randomness
+                      <li>A solution that only uses minute variables towards the end of one's pin, which would reduce this risk, makes pins more predictable, lowers randomness</li>
                     </ul>
                   </li>
                 </ul>

@@ -6,12 +6,12 @@
           <v-card-title>Markov Diceware</v-card-title>
           <v-container>
             <h2>What</h2>
-            <p>A <a href="https://diceware.dmuth.org">diceware</a> that has a larger dictionary of sorts.</p>
+            <p>A <a href="https://diceware.dmuth.org">diceware</a> that has a larger dictionary by expanding the diceware dictionary by implementing a <a href="https://setosa.io/ev/markov-chains/" target="_blank">Markov Chain</a>.</p>
             <h2>Why Use</h2>
             <ul>
               <li>Randomness is calculated with dictionary_size<sup>words_in_phrase</sup>. A normal diceware passphrase of 3 words (~15 characters long) with default dictionary of 8000 words has 8000<sup>3</sup>=512 billion possiblities. Comparatively a random password using 7 alphabet characters (lower and upper case) has 52<sup>7</sup>=~1028 billion possible passwords. Now while 512 billion sounds nice, a 7 character password which most would consider unsafe, has more possiblities. If a bruteforcer used a diceware dictionary they could potentially crack your password sooner than a 7 character password.
                 <ul>
-                  <li>If a user modifies the diceware in anyway it increases the complexity immensely (substitution, insertion, custom dictionary, etc)
+                  <li>If a user modifies the diceware in anyway it increases the complexity immensely (substitution, insertion, custom dictionary, etc)</li>
                 </ul>
               </li>
             </ul>
@@ -59,7 +59,7 @@
 	            <strong class="ml-3">
 	              {{passphrase}}
 	            </strong>
-            </row>
+            </v-row>
           </v-container>
         </v-card>
       </v-col>

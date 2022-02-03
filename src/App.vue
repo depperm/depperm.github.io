@@ -13,7 +13,6 @@
       <template v-slot:extension>
         <v-tabs v-model="tab">
           <v-tabs-slider color="yellow"></v-tabs-slider>
-
           <v-tab
             v-for="item in ideas"
             :key="item"
@@ -38,6 +37,9 @@
 import WebOTP from './components/WebOTP';
 import MarkovDiceware from './components/MarkovDiceware';
 import TimePassword from './components/TimePassword';
+import Overview from './components/Overview';
+import OtherOptions from './components/OtherOptions';
+// import Music from './components/Music';
 
 export default {
   name: 'App',
@@ -49,9 +51,12 @@ export default {
   data: () => ({
     tab: null,
     ideas: [
+      {title:'Overview', component: Overview},
       {title:'Web TOTP', component: WebOTP},
       {title:'Markov Diceware', component: MarkovDiceware},
-      {title:'Time Based Password', component: TimePassword}
+      {title:'Time Based Password', component: TimePassword},
+      {title:'OtherOptions', component: OtherOptions},
+      // {title:'Music', component: Music}
     ]
   }),
 };
