@@ -39,7 +39,6 @@ import MarkovDiceware from './components/MarkovDiceware';
 import TimePassword from './components/TimePassword';
 import Overview from './components/Overview';
 import OtherOptions from './components/OtherOptions';
-// import Music from './components/Music';
 
 export default {
   name: 'App',
@@ -55,8 +54,7 @@ export default {
       {title:'Web TOTP', component: WebOTP},
       {title:'Markov Diceware', component: MarkovDiceware},
       {title:'Time Based Password', component: TimePassword},
-      {title:'OtherOptions', component: OtherOptions},
-      // {title:'Music', component: Music}
+      {title:'Other Options', component: OtherOptions}
     ]
   }),
 };

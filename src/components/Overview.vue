@@ -5,37 +5,116 @@
         <v-card class="ma-2 about">
           <v-card-title>Overview</v-card-title>
           <v-container>
-            <p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
-            <h2>What is Security</h2>
-            <ul>
-            	<li><strong>What you have</strong> (RSA, OTP)</li>
-            	<li><strong>What you know</strong> (password)</li>
-            	<li><strong>What you are</strong> (biometrics)</li>
-            </ul>
-            <h2>Why Use Alternatives</h2>
-            <p>We as humanity have been reduced to using <a href="https://github.com/duffn/dumb-password-rules" target="_blank">dumb password</a> rules which increase complexity and decreases usability. Or to use rules that enforce changing one's password after an arbitary period of time. Rules such as these are more of a security theater, making us feel safe but at the cost of <a href="https://xkcd.com/936/" target="_blank">remembering confusing passwords</a>. I believe there are better options. Even if none of these ideas ever gain traction, there are other options out there that would improve usability of passwords like:</p>
-            <ul>
-              <li><a href="https://github.com/zxcvbn-ts/zxcvbn" target="_blank">zxcvbn</a>: a better <strong>bad</strong> password meter that doesn't enforce dumb rules by default, almost all <i>strength</i> estimators are utter nonsense (<a href="https://security.stackexchange.com/questions/208937/is-diceware-more-secure-than-a-long-passphrase#comment-420430" target="_blank">source</a>)</li>
-            </ul>
-            <h2>References</h2>
-            <ul>
-              <li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html#sec5" target="_blank">NIST</a>: National Institute of Standards and Technology (US)
-              	<ul>
-              		<li>Password minimum length of 8</li>
-              		<li>Block/reject compromised/common/sequential passwords (see zxcvbn above or <a href="https://haveibeenpwned.com/" target="_blank">haveibeenpwned</a>)</li>
-              		<li><strong>ALL</strong> characters allowed</li>
-              		<li><a href="https://www.nist.gov/publications/zero-trust-architecture" target="_blank">Zero Trust</a></li>
-              	</ul>
-              </li>
-              <li><a href="https://www.ncsc.gov.uk/collection/passwords/updating-your-approach" target="_blank">NSC</a>: National Cyber Security Centre (UK)
-              	<ul>
-              		<li>Encourage password manager use (generated passwords can be super complex)</li>
-              		<li>Encourage memorable passwords (3 word diceware or CVC-CVC-CVC format)</li>
-              		<li>Don't enforce complexity</li>
-              		<li>Block/reject compromised/common passwords (see above)</li>
-              	</ul>
-              </li>
-            </ul>
+          	<v-expansion-panels multiple>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>Security</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+          				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
+			            <h2>What is Security</h2>
+			            <ul>
+			            	<li><strong>What you have</strong> (RSA, OTP)</li>
+			            	<li><strong>What you know</strong> (password)</li>
+			            	<li><strong>What you are</strong> (biometrics)</li>
+			            </ul>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>History</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+          				<v-timeline dense>
+          					<v-timeline-item>
+          						<v-card>
+          							<v-card-title>1961</v-card-title>
+          							<v-card-text>
+          								The introduction of the modern computer password is usually attributed to Fernando Corbató at MIT to ensure each researcher's individual files remained private.
+
+          								Back then, Corbató considered the password a rudimentary security method. However, its utter simplicity paved the way for its popular adoption. So the password eventually became the long-term solution for maintaining computer security. It’s simple, it’s cost-effective, requires virtually no training, and can be propagated with ease.
+          							</v-card-text>
+          						</v-card>
+          					</v-timeline-item>
+          					<v-timeline-item>
+          						<v-card>
+          							<v-card-title>1990s</v-card-title>
+          							<v-card-text>
+          								Plenty of sensitive data was being stored in systems and online. Value moved online, and crime followed. Therefore, passwords also had to be more secure to protect sensitive data from being stolen and misused.
+
+          								To achieve that goal, computer scientists turned to cryptology, and terms like “hashing” (developed by a cryptographer named Robert Morris Sr.) and “salting” were introduced as methods of making it more difficult to guess passwords.
+          							</v-card-text>
+          						</v-card>
+          					</v-timeline-item>
+          					<v-timeline-item>
+          						<v-card>
+          							<v-card-title>Date</v-card-title>
+          							<v-card-text></v-card-text>
+          						</v-card>
+          					</v-timeline-item>
+          					<v-timeline-item>
+          						<v-card>
+          							<v-card-title>Date</v-card-title>
+          							<v-card-text></v-card-text>
+          						</v-card>
+          					</v-timeline-item>
+          					<v-timeline-item>
+          						<v-card>
+          							<v-card-title>Date</v-card-title>
+          							<v-card-text></v-card-text>
+          						</v-card>
+          					</v-timeline-item>
+          				</v-timeline>
+          				Source: <a href="https://gkaccess.com/history-of-the-password/#:~:text=The%20Evolution%20of%20the%20Password%201%20Historical%20roots.,Further%20developments.%20...%204%20Password%20best%20practices.%20">History of Password</a>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>Why Use Alternatives</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+          				<p>We as humanity have been reduced to using <a href="https://github.com/duffn/dumb-password-rules" target="_blank">dumb password</a> rules which increase complexity and decreases usability. Or to use rules that enforce changing one's password after an arbitary period of time. Rules such as these are more of a security theater, making us feel safe but at the cost of <a href="https://xkcd.com/936/" target="_blank">remembering confusing passwords</a>. I believe there are better options. Even if none of these ideas ever gain traction, there are other options out there that can improve security:</p>
+			            <ul>
+			              <li><a href="https://github.com/zxcvbn-ts/zxcvbn" target="_blank">zxcvbn</a>: a better <strong>bad</strong> password meter that doesn't enforce dumb rules by default, almost all <i>strength</i> estimators are utter nonsense (<a href="https://security.stackexchange.com/questions/208937/is-diceware-more-secure-than-a-long-passphrase#comment-420430" target="_blank">source</a>) as they can only tell you what a <strong>bad</strong> password is</li>
+			              <li>Password manager (<a href="https://bitwarden.com" target="_blank">Bitwarden</a>, <a href="https://www.lastpass.com" target="_blank">LastPass</a>, <a href="https://www.cnet.com/tech/services-and-software/best-password-manager/" target="_blank">others</a>)</li>
+			              <li>Diceware (see Markov Diceware for sources)</li>
+			            </ul>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>References</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+			            <ul>
+			              <li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html#sec5" target="_blank">NIST</a>: National Institute of Standards and Technology (US)
+			              	<ul>
+			              		<li>Password minimum length of 8</li>
+			              		<li>Block/reject compromised/common/sequential passwords (see zxcvbn above or <a href="https://haveibeenpwned.com/" target="_blank">haveibeenpwned</a>)</li>
+			              		<li><strong>ALL</strong> characters allowed</li>
+			              		<li><a href="https://www.nist.gov/publications/zero-trust-architecture" target="_blank">Zero Trust</a></li>
+			              	</ul>
+			              </li>
+			              <li><a href="https://www.ncsc.gov.uk/collection/passwords/updating-your-approach" target="_blank">NSC</a>: National Cyber Security Centre (UK)
+			              	<ul>
+			              		<li>Encourage password manager use (generated passwords can be super complex)</li>
+			              		<li>Encourage memorable passwords (3 word diceware or CVC-CVC-CVC format)</li>
+			              		<li>Don't enforce complexity</li>
+			              		<li>Block/reject compromised/common passwords (see above)</li>
+			              	</ul>
+			              </li>
+			            </ul>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>Terminology</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+			            <ul>
+			            	<li>hashing: Converting text string (no matter the length) into an encryped string of a fixed length. Algorithms:
+			            		<ul>
+			            			<li><strike>MD5:</strike> created 128-bit output and was a commonly used. Unfortunately, weaknesses in the algorithm started to surface, with most of the weaknesses manifesting themselves as collisions, thus MD5 started to be phased out.</li>
+			            			<li>SHA-1: creates 160-bit output, fairly widespread use and acceptance</li>
+			            			<li>SHA-2: collection of algorithms ranging from 224-512 bit output.</li>
+			            		</ul>
+			            	</li>
+			            	<li>salt: random string appended/prepended to string pre hash to introduce randomness. Should be unique per user.</li>
+			            </ul>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          	</v-expansion-panels>
+
             <h2>Problems/Risks</h2>
             <p>We can never be totally safe. No cybersecurity solution is permanent, so public policy must constantly evolve to suit the needs of its citizens in the cyber realm.</p>
           </v-container>

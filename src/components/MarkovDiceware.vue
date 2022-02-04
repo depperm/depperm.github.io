@@ -49,7 +49,12 @@
 	          </v-row>
             <v-select v-model="dictionary" :items="dictionaries" label="Dictionary"></v-select>
             <v-row justify="space-around">
-              <v-checkbox v-model="wholeDictionary" label="Use Whole Dictionary" title="Default is to use min & max of dice rolls to generate markov chain"></v-checkbox>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-checkbox v-model="wholeDictionary" label="Use Whole Dictionary" v-on="on" v-bind="attrs" title="Default is to use min & max of dice rolls to generate markov chain"></v-checkbox>
+                </template>
+                <span>Unselected will only create a markov chain from words between the lowest and highest rolls (number of words).</span>
+              </v-tooltip>
             	<v-btn depressed color="primary" @click="generatePassword()">
    						 Generate
   						</v-btn>

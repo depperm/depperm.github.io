@@ -14,7 +14,7 @@
         </v-card>
       </v-col>
       <v-col sm="12" md="6">
-        <v-card class="ma-2">
+        <v-card class="ma-2 about">
           <v-card-title>Complex Pin Pattern</v-card-title>
           <v-container>
           	<p>
@@ -59,5 +59,8 @@
 <style>
 .about{
   text-align: left;
+}
+img{
+	width: 100%;
 }
 </style>
