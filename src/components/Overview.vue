@@ -18,6 +18,19 @@
 			            </ul>
 			            <p>Passwords should be hashed when stored on the backend. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
 			            <p>Restrictions on maximum length or content should be generally pointless. The reason for restrictions comes down to lazy and/or uneducated programmers/managers. Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
+			            <div>
+			            	The password <code>password1234</code> (bad password) hashed:
+			            	<pre>
+			            		//MD5
+			            		bdc87b9c894da5168059e00ebffb9077
+			            		//SHA-1
+			            		e6b6afbd6d76bb5d2041542d7d2e3fac5bb05593
+			            		//SHA-256
+			            		b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3
+			            		//SHA-512
+			            		8c7c9d16278ac60a19776f204f3109b1c2fc782ff8b671f42426a85cf72b1021887dd9e4febe420dcd215ba499ff12e230daf67afffde8bf84befe867a8822c4
+			            	</pre>
+			            </div>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
           		<v-expansion-panel>
