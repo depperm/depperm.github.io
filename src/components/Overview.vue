@@ -7,45 +7,6 @@
           <v-container>
           	<v-expansion-panels multiple>
           		<v-expansion-panel>
-          			<v-expansion-panel-header>Security</v-expansion-panel-header>
-          			<v-expansion-panel-content>
-          				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
-			            <h3>What is Security</h3>
-			            <ul>
-			            	<li><strong>What you have</strong> (RSA, OTP)</li>
-			            	<li><strong>What you know</strong> (password)</li>
-			            	<li><strong>What you are</strong> (biometrics)</li>
-			            </ul>
-			            <p>Passwords should be hashed when stored on the backend. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
-			            <p>Restrictions on maximum length or content should be generally pointless. The reason for restrictions comes down to lazy and/or uneducated programmers/managers. Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
-			            <div>
-			            	The password <code>password1234</code> (bad password) hashed:
-			            	<pre>
-			            		//MD5
-			            		bdc87b9c894da5168059e00ebffb9077
-			            		//SHA-1
-			            		e6b6afbd6d76bb5d2041542d7d2e3fac5bb05593
-			            		//SHA-256
-			            		b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3
-			            		//SHA-512
-			            		8c7c9d16278ac60a19776f204f3109b1c2fc782ff8b671f42426a85cf72b1021887dd9e4febe420dcd215ba499ff12e230daf67afffde8bf84befe867a8822c4
-			            	</pre>
-			            </div>
-          			</v-expansion-panel-content>
-          		</v-expansion-panel>
-          		<v-expansion-panel>
-          			<v-expansion-panel-header>Some Password Risks</v-expansion-panel-header>
-          			<v-expansion-panel-content>
-			            <ul>
-			            	<li><strong>Phishing</strong>: social engineering to trick attempting to trick users into providing credentials to what they believe is a legitimate site</li>
-			            	<li><strong>Keylogging</strong>: record keystrokes from keyboard</li>
-			            	<li><strong>Brute force</strong>: Generally with data breaches passwords remain hashed (hopefully). Using a variety of methods malicious users can create passwords, hash them, and compare against leaked passwords until they find a match.</li>
-			            	<li><strong>Local discover</strong>: password is seen where it is recorded or as it is typed in</li>
-			            	<li><strong>Password Spraying</strong>: guessing common passwords</li>
-			            </ul>
-          			</v-expansion-panel-content>
-          		</v-expansion-panel>
-          		<v-expansion-panel>
           			<v-expansion-panel-header>History</v-expansion-panel-header>
           			<v-expansion-panel-content>
           				<v-timeline dense>
@@ -121,6 +82,45 @@
           				<p>
           					This list is meant to show you why it's important to use good passwords. You never know when you're data might be exposed, so it's important to be as safe as possible.
           				</p>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>Security</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+          				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
+			            <h3>What is Security</h3>
+			            <ul>
+			            	<li><strong>What you have</strong> (RSA, OTP)</li>
+			            	<li><strong>What you know</strong> (password)</li>
+			            	<li><strong>What you are</strong> (biometrics)</li>
+			            </ul>
+			            <p>Passwords should be hashed when stored on the backend. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
+			            <p>Restrictions on maximum length or content should be generally pointless. The reason for restrictions comes down to lazy and/or uneducated programmers/managers. Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
+			            <div>
+			            	The password <code>password1234</code> (bad password) hashed:
+			            	<pre>
+			            		//MD5
+			            		bdc87b9c894da5168059e00ebffb9077
+			            		//SHA-1
+			            		e6b6afbd6d76bb5d2041542d7d2e3fac5bb05593
+			            		//SHA-256
+			            		b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3
+			            		//SHA-512
+			            		8c7c9d16278ac60a19776f204f3109b1c2fc782ff8b671f42426a85cf72b1021887dd9e4febe420dcd215ba499ff12e230daf67afffde8bf84befe867a8822c4
+			            	</pre>
+			            </div>
+          			</v-expansion-panel-content>
+          		</v-expansion-panel>
+          		<v-expansion-panel>
+          			<v-expansion-panel-header>Some Password Risks</v-expansion-panel-header>
+          			<v-expansion-panel-content>
+			            <ul>
+			            	<li><strong>Phishing</strong>: social engineering to trick attempting to trick users into providing credentials to what they believe is a legitimate site</li>
+			            	<li><strong>Keylogging</strong>: record keystrokes from keyboard</li>
+			            	<li><strong>Brute force</strong>: Generally with data breaches passwords remain hashed (hopefully). Using a variety of methods malicious users can create passwords, hash them, and compare against leaked passwords until they find a match.</li>
+			            	<li><strong>Local discover</strong>: password is seen where it is recorded or as it is typed in</li>
+			            	<li><strong>Password Spraying</strong>: guessing common passwords</li>
+			            </ul>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
           		<v-expansion-panel>
