@@ -54,14 +54,14 @@ export default class EQ {
             return Math.floor((new Date().getHours()) % 10)
             break;
           case 'C':
-            twelve = (new Date().getHours()+1)
+            twelve = (new Date().getHours())
             if (twelve > 12) {
               twelve -= 12
             }
             return Math.floor(twelve / 10)
             break;
           case 'D':
-            twelve = (new Date().getHours()+1)
+            twelve = (new Date().getHours())
             if (twelve > 12) {
               twelve -= 12
             }
