@@ -6,7 +6,7 @@
           <v-card-title>Web TOTP</v-card-title>
           <v-container>
             <h2>What</h2>
-            <p>A TOTP app that can be accessed anywhere you can access the internet without any extra apps installed.</p>
+            <p>A OTP app that can be accessed anywhere you can access the internet without any extra apps installed.</p>
             <h2>Why Use</h2>
             <ul>
               <li>Most current 2FA(TOTP) methods require an app(authenticator), extension(sometimes browser dependant), or hardware device(RSA token) (this has the downside of when you lose the hardware device or lose access to your device you can no longer use 2FA)</li>

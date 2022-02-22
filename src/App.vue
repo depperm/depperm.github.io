@@ -42,11 +42,14 @@ import OtherOptions from './components/OtherOptions';
 
 export default {
   name: 'App',
+  components: {
+    WebOTP,
+  },
   data: () => ({
     tab: null,
     ideas: [
       {title:'Overview', component: Overview},
-      {title:'Web TOTP', component: WebOTP},
+      {title:'Web OTP', component: WebOTP},
       {title:'Markov Diceware', component: MarkovDiceware},
       {title:'Time Based Password', component: TimePassword},
       {title:'Other Options', component: OtherOptions}
