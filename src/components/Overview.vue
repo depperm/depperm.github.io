@@ -94,20 +94,25 @@
 			            	<li><strong>What you know</strong> (password)</li>
 			            	<li><strong>What you are</strong> (biometrics)</li>
 			            </ul>
-			            <p>Passwords should be hashed when stored on the backend. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
+			            <p>Passwords should be hashed when stored on the backend. A hash is:
+			            <ul>
+			            	<li><strong>Fixed length: No matter the input, the length of the hash is the same. (hash length abc == hash length supercalifragilisticexpialidoshish)</strong></li>
+			            	<li><strong>Deterministic:</strong> The same input calculates the same hash (verify entered password matches)</li>
+			            	<li><strong>Collision Resistant:</strong> A collision is when the same hash is generated for two different inputs. Better algorithms have lower collision probability. (hash of password1234 != hash password5678)</li>
+			            	<li><strong>Unidirectional:</strong> Given a hash, there isn't any reasonable way to find out what the original piece of data was. (knowing hash != knowing password)</li>
+			            </ul> a map of data from arbitray size to fixed-size values. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
 			            <p>Restrictions on maximum length or content should be generally pointless. The reason for restrictions comes down to lazy and/or uneducated programmers/managers. Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
 			            <div>
-			            	The password <code>password1234</code> (bad password) hashed:
-			            	<pre>
-			            		//MD5
-			            		bdc87b9c894da5168059e00ebffb9077
-			            		//SHA-1
-			            		e6b6afbd6d76bb5d2041542d7d2e3fac5bb05593
-			            		//SHA-256
-			            		b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3
-			            		//SHA-512
-			            		8c7c9d16278ac60a19776f204f3109b1c2fc782ff8b671f42426a85cf72b1021887dd9e4febe420dcd215ba499ff12e230daf67afffde8bf84befe867a8822c4
-			            	</pre>
+			            	Hashing example:
+			            	<v-text-field v-model="password" label="Password"></v-text-field>
+			            	<h3>MD5</h3>
+			            	<div>{{md5}}</div>
+			            	<h3>SHA1</h3>
+			            	<div>{{sha1}}</div>
+			            	<h3>SHA256</h3>
+			            	<div>{{sha256}}</div>
+			            	<h3>SHA512</h3>
+			            	<div>{{sha512}}</div>
 			            </div>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
@@ -185,10 +190,26 @@
 </template>
 
 <script>
+	var crypto = require('crypto');
 
   export default {
     data: () => ({
-    })
+    	password: 'password1234'
+    }),
+    computed: {
+    	md5: function() {
+    		return crypto.creatHash('md5').update(this.password).digest('hex');
+    	},
+    	sha1: function() {
+    		return crypto.creatHash('sha21').update(this.password).digest('hex');
+    	},
+    	sha256: function() {
+    		return crypto.creatHash('sha256').update(this.password).digest('hex');
+    	},
+    	sha512: function() {
+    		return crypto.creatHash('sha512').update(this.password).digest('hex');
+    	}
+    }
   }
 </script>
 <style>
