@@ -24,8 +24,8 @@
     </v-app-bar>
 
     <v-main>
-      <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in ideas" :key="item" @click="scrollToTop">
+      <v-tabs-items v-model="tab" @click="scrollToTop">
+        <v-tab-item v-for="item in ideas" :key="item">
           <component :is="item.component"></component>
         </v-tab-item>
       </v-tabs-items>
@@ -41,12 +41,7 @@ import Overview from './components/Overview';
 import OtherOptions from './components/OtherOptions';
 
 export default {
-  name: 'App',
-
-  components: {
-    WebOTP,
-  },
-
+  name: 'Alternate Security Options',
   data: () => ({
     tab: null,
     ideas: [
