@@ -93,14 +93,14 @@
 			            	<li><strong>What you know</strong> (password)</li>
 			            	<li><strong>What you are</strong> (biometrics)</li>
 			            </ul>
-			            <p>Passwords should be hashed when stored on the backend. A hash is:
+			            <p>Passwords should be hashed when stored on a service. A hash is:</p>
 			            <ul>
 			            	<li><strong>Fixed length:</strong> No matter the input, the length of the hash is the same. (hash length abc == hash length supercalifragilisticexpialidoshish)</li>
-			            	<li><strong>Deterministic:</strong> The same input calculates the same hash (verify entered password matches)</li>
+			            	<li><strong>Deterministic:</strong> The same input calculates the same hash (hashing same string always equals same string)</li>
 			            	<li><strong>Collision Resistant:</strong> A collision is when the same hash is generated for two different inputs. Better algorithms have lower collision probability. (hash of password1234 != hash password5678)</li>
-			            	<li><strong>Unidirectional:</strong> Given a hash, there isn't any reasonable way to find out what the original piece of data was. (knowing hash != knowing password)</li>
+			            	<li><strong>Unidirectional:</strong> Given a hash, there isn't any reasonable way to find out what the original piece of data was. (knowing hash != being able to figure out input)</li>
 			            </ul>
-			            If an account ever sends you the plaintext of your password, this is a sign of major security issues. I'd recommend getting rid of your account and changing any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> (see also <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a>)</p>
+			            <p>If a service ever sends you the plaintext of your password, this is a sign of major security issues. I'd recommend getting rid of your account and changing any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> (see also <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a>)</p>
 			            <p>Restrictions on maximum length or content should be generally pointless (hashing doesn't care about input length). The reason for character restrictions comes down to lazy and/or uneducated programmers/managers (hashing doesn't care what is entered). Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
 			            <div>
 			            	Hashing example:
@@ -115,6 +115,8 @@
 			            	<div>{{sha512}}</div>
 			            	<h3>SHA3</h3>
 			            	<div>{{sha3}}</div>
+			            	<h3>PBKDF2 (password specific-see also bcrypt and scrypt)</h3>
+			            	<div>{{pbkdf2}}</div>
 			            </div>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
@@ -175,6 +177,7 @@
 			            			<li><strike>MD5:</strike> created 128-bit output and was a commonly used. Unfortunately, weaknesses in the algorithm started to surface, with most of the weaknesses manifesting themselves as collisions, thus MD5 started to be phased out.</li>
 			            			<li>SHA-1: creates 160-bit output, fairly widespread use and acceptance</li>
 			            			<li>SHA-2: collection of algorithms ranging from 224-512 bit output.</li>
+			            			<li>PBKDF2: another hashing algorithm specifically for passwords. NIST deemed secure enough.</li>
 			            		</ul>
 			            	</li>
 			            	<li>salt: random string appended/prepended to string pre hash to introduce randomness. Should be unique per user.</li>
@@ -200,6 +203,7 @@
     	password: 'password1234'
     }),
     computed: {
+    	//ref: https://cryptojs.gitbook.io/docs/
     	md5: function() {
     		return CryptoJS.MD5(this.password);
     	},
@@ -214,6 +218,9 @@
     	},
     	sha3: function() {
     		return CryptoJS.SHA3(this.password);
+    	},
+    	pbkdf2: function() {
+    		return CryptoJS.PBKDF2(this.password, 'salt', { keySize: 256/32 });
     	}
     }
   }
