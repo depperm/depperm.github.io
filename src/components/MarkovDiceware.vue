@@ -27,7 +27,7 @@
                 <ul>
                   <li>key logging</li>
                   <li>phished info</li>
-                  <li>over shoulder spied</li>
+                  <li>local discovery</li>
                 </ul>
               </li>
             </ul>

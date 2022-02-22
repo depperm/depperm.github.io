@@ -31,12 +31,12 @@
                   </li>
                 </ul>
               </li>
-              <li>Pin equation needs to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your pin on the leaked site</li>
+              <li>Pin equation needs to be stored server side, if there is a db dump/hack this info can in theory be revealed (has to be decrypted) and anyone can generate your pin on the leaked site (don't know how to hash this)</li>
               <li>Generic dangers
                 <ul>
                   <li><s>key logging</s>(caveat is the initial equation can be, simple equations could potentially be reversed engineered)</li>
                   <li>phished info?(should in theory be harder for someone to phish for equations)</li>
-                  <li><s>over shoulder spied</s>(caveat same as above)</li>
+                  <li><s>visual discovery</s>(caveat same as above)</li>
                 </ul>
               </li>
             </ul>

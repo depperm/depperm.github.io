@@ -96,15 +96,16 @@
 			            </ul>
 			            <p>Passwords should be hashed when stored on the backend. A hash is:
 			            <ul>
-			            	<li><strong>Fixed length: No matter the input, the length of the hash is the same. (hash length abc == hash length supercalifragilisticexpialidoshish)</strong></li>
+			            	<li><strong>Fixed length:</strong> No matter the input, the length of the hash is the same. (hash length abc == hash length supercalifragilisticexpialidoshish)</li>
 			            	<li><strong>Deterministic:</strong> The same input calculates the same hash (verify entered password matches)</li>
 			            	<li><strong>Collision Resistant:</strong> A collision is when the same hash is generated for two different inputs. Better algorithms have lower collision probability. (hash of password1234 != hash password5678)</li>
 			            	<li><strong>Unidirectional:</strong> Given a hash, there isn't any reasonable way to find out what the original piece of data was. (knowing hash != knowing password)</li>
-			            </ul> a map of data from arbitray size to fixed-size values. If an account ever sends you the plaintext of your password get rid of your account and change any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> or <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a></p>
-			            <p>Restrictions on maximum length or content should be generally pointless. The reason for restrictions comes down to lazy and/or uneducated programmers/managers. Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
+			            </ul>
+			            If an account ever sends you the plaintext of your password, this is a sign of major security issues. I'd recommend getting rid of your account and changing any passwords that might match. <a href="http://web.archive.org/web/20130907182806/https://defuse.ca/password-policy-hall-of-shame.htm">Some sites known to store passwords as plaintext</a> (see also <a href="https://plaintextoffenders.com/about/">Plain Text Offenders</a>)</p>
+			            <p>Restrictions on maximum length or content should be generally pointless (hashing doesn't care about input length). The reason for character restrictions comes down to lazy and/or uneducated programmers/managers (hashing doesn't care what is entered). Allowing more characters means more thought needs to be put in to avoid SQL injection or cross site scripting, but if passwords are just hashed this shouldn't be a concern.</p>
 			            <div>
 			            	Hashing example:
-			            	<v-text-field v-model="password" label="Password"></v-text-field>
+			            	<v-text-field v-model="password" label="Password" title="DO NOT PUT YOUR REAL PASSWORD HERE. DEMOING PURPOSES ONLY."></v-text-field>
 			            	<h3>MD5</h3>
 			            	<div>{{md5}}</div>
 			            	<h3>SHA1</h3>
@@ -125,7 +126,7 @@
 			            	<li><strong>Phishing</strong>: social engineering to trick attempting to trick users into providing credentials to what they believe is a legitimate site</li>
 			            	<li><strong>Keylogging</strong>: record keystrokes from keyboard</li>
 			            	<li><strong>Brute force</strong>: Generally with data breaches passwords remain hashed (hopefully). Using a variety of methods malicious users can create passwords, hash them, and compare against leaked passwords until they find a match.</li>
-			            	<li><strong>Local discover</strong>: password is seen where it is recorded or as it is typed in</li>
+			            	<li><strong>Local discovery</strong>: password is seen where it is recorded or as it is typed in</li>
 			            	<li><strong>Password Spraying</strong>: guessing common passwords</li>
 			            </ul>
           			</v-expansion-panel-content>
@@ -142,7 +143,7 @@
           			</v-expansion-panel-content>
           		</v-expansion-panel>
           		<v-expansion-panel>
-          			<v-expansion-panel-header>References</v-expansion-panel-header>
+          			<v-expansion-panel-header>Password Guidance</v-expansion-panel-header>
           			<v-expansion-panel-content>
 			            <ul>
 			              <li><a href="https://pages.nist.gov/800-63-3/sp800-63b.html#sec5" target="_blank">NIST</a>: National Institute of Standards and Technology (US)

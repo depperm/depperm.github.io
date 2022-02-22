@@ -35,9 +35,9 @@
               </li>
               <li>Generic dangers
                 <ul>
-                  <li>key logging</li>
+                  <li><s>key logging<s>?</li>
                   <li>phished info</li>
-                  <li>over shoulder spied</li>
+                  <li>local discovery</li>
                 </ul>
               </li>
             </ul>

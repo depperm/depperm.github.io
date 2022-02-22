@@ -25,7 +25,7 @@
 
     <v-main>
       <v-tabs-items v-model="tab">
-        <v-tab-item v-for="item in ideas" :key="item">
+        <v-tab-item v-for="item in ideas" :key="item" @click="scrollToTop">
           <component :is="item.component"></component>
         </v-tab-item>
       </v-tabs-items>
@@ -57,6 +57,11 @@ export default {
       {title:'Other Options', component: OtherOptions}
     ]
   }),
+  methods: {
+    scrollToTop(){
+      window.scrollTo(0,0);
+    }
+  }
 };
 </script>
 <style>
