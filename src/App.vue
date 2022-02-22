@@ -41,7 +41,7 @@ import Overview from './components/Overview';
 import OtherOptions from './components/OtherOptions';
 
 export default {
-  name: 'Alternate Security Options',
+  name: 'App',
   data: () => ({
     tab: null,
     ideas: [
