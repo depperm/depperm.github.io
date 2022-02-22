@@ -24,7 +24,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-tabs-items v-model="tab">
+      <v-tabs-items v-model="tab" @change="scrollToTop">
         <v-tab-item v-for="item in ideas" :key="item">
           <component :is="item.component"></component>
         </v-tab-item>
@@ -42,9 +42,6 @@ import OtherOptions from './components/OtherOptions';
 
 export default {
   name: 'Alternate Security Options',
-  mounted() {
-    this.scrollToTop();
-  },
   data: () => ({
     tab: null,
     ideas: [
