@@ -113,6 +113,8 @@
 			            	<div>{{sha256}}</div>
 			            	<h3>SHA512</h3>
 			            	<div>{{sha512}}</div>
+			            	<h3>SHA3</h3>
+			            	<div>{{sha3}}</div>
 			            </div>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
@@ -190,7 +192,7 @@
 </template>
 
 <script>
-	var crypto = require('crypto');
+	const CryptoJS = require('crypto-js');
 
   export default {
     data: () => ({
@@ -198,16 +200,19 @@
     }),
     computed: {
     	md5: function() {
-    		return crypto.creatHash('md5').update(this.password).digest('hex');
+    		return CryptoJS.MD5(this.password);
     	},
     	sha1: function() {
-    		return crypto.creatHash('sha21').update(this.password).digest('hex');
+    		return CryptoJS.SHA1(this.password);
     	},
     	sha256: function() {
-    		return crypto.creatHash('sha256').update(this.password).digest('hex');
+    		return CryptoJS.SHA256(this.password);
     	},
     	sha512: function() {
-    		return crypto.creatHash('sha512').update(this.password).digest('hex');
+    		return CryptoJS.SHA512(this.password);
+    	},
+    	sha3: function() {
+    		return CryptoJS.SHA3(this.password);
     	}
     }
   }
