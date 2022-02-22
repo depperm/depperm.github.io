@@ -11,11 +11,11 @@
 
       <v-spacer></v-spacer>
       <template v-slot:extension>
-        <v-tabs v-model="tab">
+        <v-tabs v-model="tab" @change="scrollToTop">
           <v-tabs-slider color="yellow"></v-tabs-slider>
           <v-tab
             v-for="item in ideas"
-            :key="item"
+            :key="item.title"
           >
             {{ item.title }}
           </v-tab>
@@ -24,8 +24,8 @@
     </v-app-bar>
 
     <v-main>
-      <v-tabs-items v-model="tab" @change="scrollToTop">
-        <v-tab-item v-for="item in ideas" :key="item">
+      <v-tabs-items v-model="tab">
+        <v-tab-item v-for="item in ideas" :key="item.title">
           <component :is="item.component"></component>
         </v-tab-item>
       </v-tabs-items>
