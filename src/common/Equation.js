@@ -48,10 +48,10 @@ export default class EQ {
         let twelve = null
         switch (this.values[0]) {
           case 'A':
-            return Math.floor((new Date().getHours()+1) / 10)
+            return Math.floor((new Date().getHours()) / 10)
             break;
           case 'B':
-            return Math.floor((new Date().getHours()+1) % 10)
+            return Math.floor((new Date().getHours()) % 10)
             break;
           case 'C':
             twelve = (new Date().getHours()+1)
@@ -68,10 +68,10 @@ export default class EQ {
             return Math.floor(twelve % 10)
             break;
           case 'E':
-            return Math.floor((new Date().getMinutes()+1) / 10)
+            return Math.floor((new Date().getMinutes()) / 10)
             break;
           case 'F':
-            return (new Date().getMinutes()+1) % 10
+            return (new Date().getMinutes()) % 10
             break;
           case 'G':
             return Math.floor(new Date().getMonth()+1/10)

@@ -153,7 +153,7 @@
         // In my case this returns "3:48:00 am"
         this.date=new Date()
         this.seconds = `${this.date.getSeconds().toString().padStart(2,'0')}`
-        this.minutes = `${(this.date.getMinutes()+1).toString().padStart(2,'0')}`
+        this.minutes = `${(this.date.getMinutes()).toString().padStart(2,'0')}`
         this.hours = this.date.getHours()
       }, 1000)
       this.checkEquation()
