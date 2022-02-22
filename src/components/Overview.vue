@@ -87,7 +87,6 @@
           		<v-expansion-panel>
           			<v-expansion-panel-header>Security</v-expansion-panel-header>
           			<v-expansion-panel-content>
-          				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
 			            <h3>What is Security</h3>
 			            <ul>
 			            	<li><strong>What you have</strong> (RSA, OTP)</li>
@@ -140,6 +139,7 @@
 			              <li>Password manager (<a href="https://bitwarden.com" target="_blank">Bitwarden</a>, <a href="https://www.lastpass.com" target="_blank">LastPass</a>, <a href="https://www.cnet.com/tech/services-and-software/best-password-manager/" target="_blank">others</a>)</li>
 			              <li>Diceware (see Markov Diceware for sources)</li>
 			            </ul>
+          				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
           			</v-expansion-panel-content>
           		</v-expansion-panel>
           		<v-expansion-panel>
