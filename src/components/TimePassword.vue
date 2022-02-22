@@ -16,7 +16,7 @@
             <h2>Benefits</h2>
             <ul>
               <li>Each pin can have individual equations-infinite possibilities</li>
-              <li>Pasword is based on time-infinite possibilities</li>
+              <li>Password is based on time-infinite possibilities</li>
             </ul>
             <h2>Problems/Risks</h2>
             <ul>

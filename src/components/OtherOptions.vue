@@ -25,7 +25,7 @@
           	<p>
           		Why not allow more complexity/entropy
           		<ul>
-	              <li>Allow dot revisit</li>
+	              <li>Allow dots to be revisited</li>
 	              <li>Expand size of pattern AND/OR change shape</li>
           		</ul>
           	</p>
