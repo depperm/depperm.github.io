@@ -140,6 +140,8 @@
 			              <li><a href="https://github.com/zxcvbn-ts/zxcvbn" target="_blank">zxcvbn</a>: a better <strong>bad</strong> password meter that doesn't enforce dumb rules by default, almost all <i>strength</i> estimators are utter nonsense (<a href="https://security.stackexchange.com/questions/208937/is-diceware-more-secure-than-a-long-passphrase#comment-420430" target="_blank">source</a>) as they can only tell you what a <strong>bad</strong> password is, not necessarily what a good one is</li>
 			              <li>Password manager (<a href="https://bitwarden.com" target="_blank">Bitwarden</a>, <a href="https://www.lastpass.com" target="_blank">LastPass</a>, <a href="https://www.cnet.com/tech/services-and-software/best-password-manager/" target="_blank">others</a>)</li>
 			              <li>Diceware (see Markov Diceware for sources)</li>
+				      <li><a href="https://www.grc.com/offthegrid.htm" target="_blank">"Off the Grid" System</a> OR <a href="https://blog.jgc.org/2010/12/write-your-passwords-down.html" target="_blank">Write Your Password Down</a></li>
+				      <li><a href="https://www.grc.com/haystack.htm" target="_blank">Password Haystack</a></li>
 			            </ul>
           				<p>Cybersecurity often puts complexity over usability. And because there aren't very good options available sometimes the security measures in place become stagnant.</p>
           			</v-expansion-panel-content>
